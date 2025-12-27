@@ -73,5 +73,4 @@ def setup_logger() -> logging.Logger:
     return logger
 
 
-# Глобальный логгер
 logger = setup_logger()
