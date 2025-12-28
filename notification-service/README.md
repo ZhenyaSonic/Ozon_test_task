@@ -58,13 +58,7 @@ pip install -e .
 ```
 
 3. **Настройте переменные окружения (опционально):**
-Создайте файл `.env` в корне проекта:
-```env
-LOG_LEVEL=INFO
-APP_HOST=0.0.0.0
-APP_PORT=8000
-DATABASE_URL=postgresql://user:password@localhost:5432/dbname
-```
+Создайте файл `.env` на основе env.example в корне проекта:
 
 4. **Запустите приложение:**
 ```bash
