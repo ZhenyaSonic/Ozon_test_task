@@ -135,6 +135,7 @@ dmypy.json
 *.db
 *.sqlite
 *.sqlite3
+notifications.db
 
 # Логи
 logs/
