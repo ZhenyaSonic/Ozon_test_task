@@ -10,6 +10,8 @@ description = "Smart Notification System"
 authors = [
     {name = "Developer", email = "dev@example.com"}
 ]
+
+
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -21,6 +23,7 @@ dependencies = [
     "pydantic==2.5.0",
     "pydantic-settings==2.1.0",
     "python-dotenv==1.0.0",
+    "httpx==0.25.2",
 ]
 
 [project.optional-dependencies]
