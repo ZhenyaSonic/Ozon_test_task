@@ -1,30 +1,16 @@
 FROM python:3.11-slim
 
-RUN adduser --disabled-password --gecos '' appuser && \
-    mkdir -p /app && \
-    chown -R appuser:appuser /app
-
-USER appuser
-
 WORKDIR /app
 
-ENV PYTHONUNBUFFERED=1 \
-    PYTHONPATH=/app \
-    LOG_LEVEL=INFO \
-    APP_HOST=0.0.0.0 \
-    APP_PORT=8000
-
-COPY pyproject.toml ./
-
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -e .
+    pip install fastapi sqlalchemy pydantic-settings uvicorn
 
 COPY . .
 
-RUN mkdir -p /app/data && chmod 755 /app/data
+ENV PYTHONPATH=/app/src:$PYTHONPATH
 
-ENV PYTHONPATH=/app/src
+RUN mkdir -p /app/data
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "cd /app/src && python -m uvicorn main:app --host 0.0.0.0 --port 8000"]
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
