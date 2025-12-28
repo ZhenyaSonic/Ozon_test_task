@@ -97,8 +97,6 @@ class TestGetNotifications:
         create_response = client.post("/api/notifications", json=notification_data)
         assert create_response.status_code == status.HTTP_201_CREATED
 
-        time.sleep(TEST_DELAY)
-
         response = client.get(
             f"/api/notifications/{notification_data['user_id']}",
             params={"status": NotificationStatus.PENDING.value}
@@ -106,9 +104,21 @@ class TestGetNotifications:
         assert response.status_code == status.HTTP_200_OK
         data = response.json()
 
-        assert data["total"] >= TEST_MIN_NOTIFICATIONS_COUNT, "Ожидается хотя бы одно уведомление"
         for notification in data["notifications"]:
             assert notification["status"] == NotificationStatus.PENDING.value
+
+        time.sleep(TEST_DELAY * 20)
+
+        response_sent = client.get(
+            f"/api/notifications/{notification_data['user_id']}",
+            params={"status": NotificationStatus.SENT.value}
+        )
+        assert response_sent.status_code == status.HTTP_200_OK
+        data_sent = response_sent.json()
+
+        assert data_sent["total"] >= TEST_MIN_NOTIFICATIONS_COUNT, "Ожидается хотя бы одно отправленное уведомление"
+        for notification in data_sent["notifications"]:
+            assert notification["status"] == NotificationStatus.SENT.value
 
     def test_get_notifications_multiple_users(self, client):
         """Тест, что уведомления одного пользователя не видны другому"""
