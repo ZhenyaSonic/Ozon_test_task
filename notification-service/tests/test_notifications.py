@@ -1,7 +1,6 @@
 """Тесты для API уведомлений"""
 import time
 from fastapi import status
-from typing import Dict, Any
 
 from src.models.notification import NotificationStatus
 from src.core.constants import (
