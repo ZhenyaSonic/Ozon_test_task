@@ -48,7 +48,7 @@ notification-service/
 
 1. **Клонируйте репозиторий:**
 ```bash
-git clone <repository-url>
+git clone https://github.com/ZhenyaSonic/Ozon_test_task.git
 cd notification-service
 ```
 
