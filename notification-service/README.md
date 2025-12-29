@@ -84,16 +84,6 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 docker build -t notification-service . && docker run -p 8000:8000 notification-service
 ```
 
-2. **Запуск через Docker Compose (с PostgreSQL):**
-```bash
-docker-compose up -d
-```
-
-Docker Compose автоматически:
-- Поднимет PostgreSQL базу данных
-- Создаст необходимые таблицы
-- Запустит приложение
-
 ## Запуск тестов
 
 ```bash
