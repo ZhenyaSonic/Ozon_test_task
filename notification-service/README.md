@@ -52,15 +52,21 @@ git clone <repository-url>
 cd notification-service
 ```
 
-2. **Установите зависимости:**
+2. **Создание папки venv:**
+```bash
+python -m vevn venv
+source ./venv/Scripts/activate
+```
+
+3. **Установите зависимости:**
 ```bash
 pip install -e .
 ```
 
-3. **Настройте переменные окружения (опционально):**
+4. **Настройте переменные окружения (опционально):**
 Создайте файл `.env` на основе env.example в корне проекта:
 
-4. **Запустите приложение:**
+5. **Запустите приложение:**
 ```bash
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
