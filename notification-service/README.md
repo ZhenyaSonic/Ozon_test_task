@@ -60,6 +60,7 @@ source ./venv/Scripts/activate
 
 3. **Установите зависимости:**
 ```bash
+cd notification-service/
 pip install -e .
 ```
 
